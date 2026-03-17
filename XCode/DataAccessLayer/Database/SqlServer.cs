@@ -1289,7 +1289,7 @@ internal class SqlServerMetaData : RemoteDbMetaData
 
         if (String.IsNullOrEmpty(file))
         {
-            if (String.IsNullOrEmpty(dp)) return $"CREATE DATABASE {Database.FormatName(dbname)}";
+            if (String.IsNullOrEmpty(dp)) return $"CREATE DATABASE {Database.FormatName(dbname)} COLLATE Chinese_PRC_CI_AS";
 
             file = dbname + ".mdf";
         }
@@ -1311,7 +1311,7 @@ internal class SqlServerMetaData : RemoteDbMetaData
 
         var sb = new StringBuilder();
 
-        sb.AppendFormat("CREATE DATABASE {0} ON  PRIMARY", Database.FormatName(dbname));
+        sb.AppendFormat("CREATE DATABASE {0} COLLATE Chinese_PRC_CI_AS ON  PRIMARY", Database.FormatName(dbname));
         sb.AppendLine();
         sb.AppendFormat(@"( NAME = N'{0}', FILENAME = N'{1}', SIZE = 10 , MAXSIZE = UNLIMITED, FILEGROWTH = 10%)", dbname, file);
         sb.AppendLine();
@@ -1546,14 +1546,14 @@ internal class SqlServerMetaData : RemoteDbMetaData
             // 创建为自增，重建表
             if (field.Identity && !oldfield.Identity)
                 return RebuildTable(field.Table, oldfield.Table);
-            
+
             // 类型改变，必须重建表
             if (IsColumnTypeChanged(field, oldfield))
                 return RebuildTable(field.Table, oldfield.Table);
         }
 
         var sb = Pool.StringBuilder.Get();
-        
+
         if (oldfield != null)
         {
             // 需要提前删除相关索引
@@ -1583,8 +1583,8 @@ internal class SqlServerMetaData : RemoteDbMetaData
                 {
                     // 增加主键约束
                     sb.AppendFormat("Alter Table {0} ADD CONSTRAINT PK_{0} PRIMARY KEY {1}({2}) ON [PRIMARY]",
-                        FormatName(field.Table), 
-                        field.Identity ? "CLUSTERED" : "", 
+                        FormatName(field.Table),
+                        field.Identity ? "CLUSTERED" : "",
                         FormatName(field));
                     sb.AppendLine(";");
                 }
