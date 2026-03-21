@@ -670,6 +670,7 @@ public class EntityBuilder : ClassBuilder
         content = Regex.Replace(content, @"\bUserModule\b", "UserInterceptor");
         content = Regex.Replace(content, @"\bIPModule\b", "IPInterceptor");
         content = Regex.Replace(content, @"\bTraceModule\b", "TraceInterceptor");
+        content = Regex.Replace(content, @"\bTenantModule\b", "TenantInterceptor");
 
         // 替换 Meta.Modules 为 Meta.Interceptors
         content = Regex.Replace(content, @"\bMeta\.Modules\b", "Meta.Interceptors");
