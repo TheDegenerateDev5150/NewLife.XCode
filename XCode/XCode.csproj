@@ -112,7 +112,7 @@
   </ItemGroup>
   <!-- Copilot Instructions 打包配置 -->
   <ItemGroup>
-    <None Include="build\NewLife.X.Code.targets" Pack="true" PackagePath="build\" />
+    <None Include="build\NewLife.XCode.targets" Pack="true" PackagePath="build\" />
     <Content Include="..\.github\instructions\xcode.instructions.md" Pack="true" PackagePath="content\.github\instructions\" />
   </ItemGroup>
 </Project>
