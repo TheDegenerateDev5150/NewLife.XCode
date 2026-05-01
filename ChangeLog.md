@@ -1,5 +1,24 @@
 # NewLife.XCode 更新日志
 
+## v11.26.2026.0501 (2026-05-01)
+
+### 功能增强
+- **Model 模型规范升级至 202604 版本**：新增多款数据库支持，增加 `ItemType` 等字段类型枚举，Membership 相关表新增 html/markdown 字段类型
+- **批量保存重构**：统一 `BatchSave` 方法的验证流程与批量能力判断逻辑，提升跨库批量操作的行为一致性
+- **批量 Update 主键参与 Where 构建**：批量 Update 操作现强制主键参与构建 Where 子句，避免因缺少主键条件导致全表更新风险
+- **AddQueue 链路追踪埋点**：为 `AddQueue` 操作增加 `Tracer` 埋点，提升异步队列写入的可观测性
+
+### Bug 修复
+- **[fix] 达梦 BatchInsert 时间字段丢失**：修复达梦数据库批量插入时 DateTime 字段值丢失问题
+- **[fix] GetFieldType Nullable\<T\> 类型映射**：修复 `GetFieldType` 方法对 `Nullable<T>` 类型未拆箱导致映射失败的问题，使用 `Nullable.GetUnderlyingType` 正确处理可空值类型
+- **[fix] KingBase GetTableNames 列名错误**：修复 `KingBaseMetaData.GetTableNames()` 使用错误的列名 `Name` 而非 `TableName` 导致获取表清单失败的问题
+- **[fix] 默认租户编码**：将默认租户的 `Code` 从空值修正为 `Default`，避免多租户判断逻辑异常
+
+### 依赖更新
+- 升级依赖包并优化 NovaDb 相关实现
+
+---
+
 ## v11.25.2026.0403 (2026-04-03)
 
 ### 新功能

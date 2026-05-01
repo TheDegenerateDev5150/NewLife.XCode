@@ -7,7 +7,7 @@
     <Description>高性能 .NET 数据中间件（超级ORM），聚焦添删改查与海量数据，内置多级缓存、自动迁移、分表分库、强类型查询与跨库迁移。</Description>
     <Company>新生命开发团队</Company>
     <Copyright>©2002-2026 NewLife</Copyright>
-    <VersionPrefix>11.25</VersionPrefix>
+    <VersionPrefix>11.26</VersionPrefix>
     <VersionSuffix>$([System.DateTime]::Now.ToString(`yyyy.MMdd`))</VersionSuffix>
     <Version>$(VersionPrefix).$(VersionSuffix)</Version>
     <FileVersion>$(Version)</FileVersion>
@@ -31,7 +31,7 @@
     <RepositoryUrl>https://github.com/NewLifeX/X</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>新生命团队;X组件;NewLife;$(AssemblyName)</PackageTags>
-    <PackageReleaseNotes>重构远程数据库服务并增强鉴权与测试覆盖；引入BatchCapability批量能力与TenantInterceptor；修复SqlServer类型映射与空表SetValue异常；修复KingBase SELECT列名引用问题；优化SQLite Truncate为Drop重建并增强全路径测试</PackageReleaseNotes>
+    <PackageReleaseNotes>Model模型规范升级至202604版本新增多款数据库与字段类型；重构批量保存方法统一验证与批量能力判断；批量Update强制主键参与Where子句；修复达梦BatchInsert时间字段丢失；修复Nullable类型映射；修复KingBase GetTableNames列名错误；新增AddQueue链路追踪埋点</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -46,7 +46,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NewLife.Core" Version="11.14.2026.402" />
+    <PackageReference Include="NewLife.Core" Version="11.15.2026.501" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="NewLife" />
@@ -109,10 +109,5 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-  <!-- Copilot Instructions 打包配置 -->
-  <ItemGroup>
-    <None Include="build\NewLife.XCode.targets" Pack="true" PackagePath="build\" />
-    <Content Include="..\.github\instructions\xcode.instructions.md" Pack="true" PackagePath="content\.github\instructions\" />
   </ItemGroup>
 </Project>

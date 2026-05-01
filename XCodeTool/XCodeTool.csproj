@@ -8,7 +8,7 @@
     <Description>XCode 官方命令行工具，基于 Model.xml 生成实体数据类与业务类，支持快速建模与持续迭代。</Description>
     <Company>新生命开发团队</Company>
     <Copyright>©2002-2026 NewLife</Copyright>
-    <VersionPrefix>11.24</VersionPrefix>
+    <VersionPrefix>11.25</VersionPrefix>
     <VersionSuffix>$([System.DateTime]::Now.ToString(`yyyy.MMdd`))</VersionSuffix>
     <Version>$(VersionPrefix).$(VersionSuffix)</Version>
     <FileVersion>$(Version)</FileVersion>
@@ -27,7 +27,7 @@
     <RepositoryUrl>https://github.com/NewLifeX/X</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>新生命团队;X组件;NewLife;$(AssemblyName)</PackageTags>
-    <PackageReleaseNotes>强化FormatName支持反向生成下划线字段名；重构实体类代码生成，支持独立生成模型类和接口</PackageReleaseNotes>
+    <PackageReleaseNotes>同步升级依赖 NewLife.XCode 11.26； Model模型规范升级至202604版本新增多款数据库与字段类型</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
